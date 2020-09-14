@@ -21,7 +21,7 @@ pas de username et de password, voir copier ecran.
 
 Contruire l’image pour le serveur PHP ( c’est un peu long )
 ```
-docker build –file .Dockerfile -t php-alone .
+docker build –file Dockerfile -t php-alone .
 ```
 
 Puis faire dans le dossier
