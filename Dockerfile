@@ -31,3 +31,10 @@ RUN mv composer.phar /usr/local/bin/composer
 # COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN chown -R www-data:www-data /var/www/html && a2enmod rewrite
 
+RUN apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git &&\
+    rm -rf /var/lib/apt/lists/*
+RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf -
+ENV PATH /usr/local/go/bin:$PATH
+RUN go get github.com/mailhog/mhsendmail
+RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
+RUN echo 'sendmail_path = /usr/bin/mhsendmail --smtp-addr mailhog:1025' > /usr/local/etc/php/php.ini

@@ -1,7 +1,7 @@
 version: '3'
 services:
 
- docker-tutorial:
+ php7:
   build:
     context: .
     dockerfile: Dockerfile
@@ -36,3 +36,10 @@ services:
   - "8081:80"
   environment:
    PMA_HOST: mysql
+
+ mailhog:
+   image: mailhog/mailhog:v1.0.0
+   ports:
+   - "1025:1025"
+   - "8025:8025"
+   
