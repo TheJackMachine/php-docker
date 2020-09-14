@@ -16,3 +16,16 @@ SMTP address: mailhog
 SMTP Port: 1025
 SMTP encryption: No encryption
 pas de username et de password, voir copier ecran.
+
+### Usage
+
+Contruire l’image pour le serveur PHP ( c’est un peu long )
+```
+docker build –file .Dockerfile -t php-alone .
+```
+
+Puis faire dans le dossier
+
+```
+docker-compose up
+```
