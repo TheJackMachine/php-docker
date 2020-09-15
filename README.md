@@ -1,31 +1,35 @@
 # php-docker Beta
 
-This files provide docker support for basic PHP application.
-The focus is to run octobercms in apache environment.
+These files provide Docker support with a basic PHP application.
+The focus is to run OctoberCMS in an Apache environment.
 
-It provide APACHE serveur runing PHP ( port 8080 ) - MySql 5.7 - PHPMyAdmin ( port 8081 )
+It provide an APACHE server runing PHP (port 8080) - MySql 5.7 - PHPMyAdmin (port 8081)
 
-### To test on Windows and Mac
-- Case sensitivity
-- Files permissions
-- Server response time
-
-### Mail settings
-Pour utiliser le testeur de mail passer en SMTP :
-SMTP address: mailhog
-SMTP Port: 1025
-SMTP encryption: No encryption
-pas de username et de password, voir copier ecran.
-
+## Instructions
 ### Usage
 
-Contruire l’image pour le serveur PHP ( c’est un peu long )
+Build the image for the PHP server (may take a while)
 ```
-docker build –file Dockerfile -t php-alone .
+docker build -f Dockerfile -t php-alone .
 ```
 
-Puis faire dans le dossier
-
+When done, simply run
 ```
 docker-compose up
 ```
+
+### Mail settings
+
+To use the mail tester switch to SMTP
+```
+SMTP Address: mailhog
+SMTP Port: 1025
+SMTP Encryption: No encryption
+No username or password, see screenshot.
+```
+
+## To test on Windows and Mac
+
+- Case sensitivity
+- Files permissions
+- Server response time
