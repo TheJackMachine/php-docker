@@ -8,6 +8,8 @@ It provide an APACHE server runing PHP (port 8080) - MySql 5.7 - PHPMyAdmin (por
 ## Instructions
 ### Usage
 
+#### Method A
+
 Build the image for the PHP server (may take a while)
 ```
 docker build -f Dockerfile -t php-alone .
@@ -17,6 +19,21 @@ When done, simply run
 ```
 docker-compose up
 ```
+
+#### Method B
+
+For the first time, run the command with buuild option to create PHP image
+```
+docker-compose up --build
+```
+
+Later, you can juste run :
+```
+docker-compose up
+```
+
+
+
 
 ### Mail settings
 
