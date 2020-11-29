@@ -36,7 +36,7 @@ services:
     - "8081:80"
     environment:
       PMA_HOST: mysql
-
+      UPLOAD_LIMIT: 800M
   mailhog:
     image: mailhog/mailhog:v1.0.0
     ports:
