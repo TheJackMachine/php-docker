@@ -40,7 +40,7 @@ services:
       PMA_HOST: mysql
       # PMA_USER: docker # Uncomment for automatic login
       # PMA_PASSWORD: docker # Uncomment for automatic login
-      UPLOAD_LIMIT: 256M
+      UPLOAD_LIMIT: 1000M
 
   mailhog:
     image: mailhog/mailhog:v1.0.0
