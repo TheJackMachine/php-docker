@@ -4,6 +4,9 @@ The focus is to run OctoberCMS in an Apache environment.
 
 It provide an APACHE server runing PHP (port 8080) - MySql 5.7 - PHPMyAdmin (port 8081)
 
+## Versions
+Choose between `php7.2-mcrypt` or `php7.3`, then copy those files at the root of your project folder.
+
 ## Building
 Build and run the Docker image:
 ```
@@ -19,6 +22,17 @@ When your Docker image has been built, run:
 ```
 docker-compose up
 ```
+
+## MySQL settings
+Uncomment lines 30-31 and 51-52 in `docker-compose.yaml` to enable persistent mysql data.
+
+Docker will create the volume for you in the `/var/lib/docker/volumes` folder. This volume persist as long as you are not typing:
+```
+docker-compose down -v
+```
+
+## PHPMyAdmin settings
+Uncomment lines 41-42 in `docker-compose.yaml` to skip phpmyadmin login screen.
 
 ## Mail settings
 To use the mail tester, change the "Mail method" to SMTP
