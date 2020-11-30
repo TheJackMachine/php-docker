@@ -7,28 +7,28 @@ services:
       dockerfile: Dockerfile
     image: php-alone
     ports:
-      - "8080:80"
+    - "8080:80"
     volumes:
-      - .:/var/www/html
+    - .:/var/www/html
     links:
-      - mysql
+    - mysql
     environment:
-        DB_HOST: mysql
-        DB_DATABASE: docker
-        DB_USERNAME: docker
-        DB_PASSWORD: docker
+      DB_HOST: mysql
+      DB_DATABASE: docker
+      DB_USERNAME: docker
+      DB_PASSWORD: docker
 
   mysql:
     image: mysql:5.7
     ports:
-      - 3306:3306
+    - 3306:3306
     environment:
       MYSQL_DATABASE: docker
       MYSQL_USER: docker
       MYSQL_PASSWORD: docker
       MYSQL_ROOT_PASSWORD: docker
-    # volumes: # Uncomment for persistent mysql data
-      # - my-datavolume:/var/lib/mysql # Uncomment for persistent mysql data
+    volumes: # Comment / Uncomment for persistent mysql data
+    - my-datavolume:/var/lib/mysql # Comment / Uncomment for persistent mysql data
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin:latest
@@ -38,9 +38,9 @@ services:
     - "8081:80"
     environment:
       PMA_HOST: mysql
-      # PMA_USER: docker # Uncomment for automatic login
-      # PMA_PASSWORD: docker # Uncomment for automatic login
-      UPLOAD_LIMIT: 256M
+      PMA_USER: docker # Comment / Uncomment for automatic login
+      PMA_PASSWORD: docker # Comment / Uncomment for automatic login
+      UPLOAD_LIMIT: 1000M
 
   mailhog:
     image: mailhog/mailhog:v1.0.0
@@ -48,5 +48,5 @@ services:
     - "1025:1025"
     - "8025:8025"
 
-# volumes: # Uncomment for persistent mysql data
-  # my-datavolume: # Uncomment for persistent mysql data
+volumes: # Comment / Uncomment for persistent mysql data
+  my-datavolume: # Comment / Uncomment for persistent mysql data
