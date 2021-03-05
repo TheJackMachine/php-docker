@@ -48,6 +48,11 @@ RUN docker-php-ext-install bcmath
 # COPY vhost.conf /etc/apache2/sites-available/000-default.conf
 RUN chown -R www-data:www-data /var/www/html && a2enmod rewrite
 
+# CHANGE INDEX.PHP FILE LOCATION BELOW
+ENV APACHE_DOCUMENT_ROOT=/var/www/html/public_html
+RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
+RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
+
 RUN apt-get install --no-install-recommends --assume-yes --quiet ca-certificates curl git &&\
     rm -rf /var/lib/apt/lists/*
 RUN curl -Lsf 'https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz' | tar -C '/usr/local' -xvzf -
