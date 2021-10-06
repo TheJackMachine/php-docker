@@ -5,7 +5,7 @@ The focus is to run OctoberCMS in an Apache environment.
 It provide an APACHE server runing PHP (port 8080) - MySql 5.7 - PHPMyAdmin (port 8081)
 
 ## Versions
-Choose between `php7.2-mcrypt` or `php7.3`, then copy those files at the root of your project folder.
+Choose between `php5.6-mcrypt`, `php7.2-mcrypt` or `php7.3`, then copy those files at the root of your project folder.
 
 ## Building
 Build and run the Docker image:
