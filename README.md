@@ -6,6 +6,7 @@ It provide an APACHE server runing PHP (port 8080) - MySql 5.7 - PHPMyAdmin (por
 
 ## Versions
 Choose between `php5.6-mcrypt`, `php7.2-mcrypt` or `php7.3`, then copy those files at the root of your project folder.
+If you are using an Apple Silicon Mac, you can use the files in `apple-silicon`. Support for mailhog has been temporarily removed until a solution has been found.
 
 ## Building
 Build and run the Docker image:
