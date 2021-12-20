@@ -1,0 +1,55 @@
+version: '3.4'
+services:
+
+    php7:
+        hostname: docker
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: php73
+        ports:
+            - "8080:80"
+            - "443:443"
+        volumes:
+            - .:/var/www/html:delegated
+        links:
+            - mysql
+        environment:
+            DB_HOST: mysql
+            DB_DATABASE: docker
+            DB_USERNAME: docker
+            DB_PASSWORD: docker
+
+    mysql:
+        platform: linux/x86_64
+        image: mysql:5.7
+        ports:
+            - 3306:3306
+        environment:
+            MYSQL_DATABASE: docker
+            MYSQL_USER: docker
+            MYSQL_PASSWORD: docker
+            MYSQL_ROOT_PASSWORD: docker
+        volumes: # Comment / Uncomment for persistent mysql data
+            - my-datavolume:/var/lib/mysql:delegated # Comment / Uncomment for persistent mysql data
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        links:
+            - mysql
+        ports:
+            - "8081:80"
+        environment:
+            PMA_HOST: mysql
+            PMA_USER: docker # Comment / Uncomment for automatic login
+            PMA_PASSWORD: docker # Comment / Uncomment for automatic login
+            UPLOAD_LIMIT: 1000M
+
+    mailhog:
+        image: mailhog/mailhog:v1.0.1
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+
+volumes: # Comment / Uncomment for persistent mysql data
+    my-datavolume: # Comment / Uncomment for persistent mysql data
