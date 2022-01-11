@@ -5,6 +5,7 @@ RUN set -ex
 #ADD wget / nano
 RUN apt-get update
 RUN apt-get install -y wget
+RUN apt-get -y install git
 RUN apt-get -y install nano
 #ADD apache SSL et REWRITE modules
 RUN a2enmod ssl
@@ -37,10 +38,10 @@ RUN apt-get install -y --no-install-recommends libfreetype6-dev \
 		libpng-dev \
 		libzip-dev
 
-RUN	docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr
+RUN	docker-php-ext-configure gd --with-freetype=/usr --with-jpeg=/usr
 RUN docker-php-ext-install gd
 
-RUN docker-php-ext-configure zip --with-libzip=/usr/include
+# RUN docker-php-ext-configure zip --with-libzip=/usr/include
 RUN docker-php-ext-install zip
 
 RUN docker-php-ext-install pdo_mysql
