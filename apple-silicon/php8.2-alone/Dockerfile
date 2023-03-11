@@ -24,17 +24,17 @@ RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 #
 ## ADD PHP Extension
-#RUN apt-get install -y --no-install-recommends libfreetype6-dev \
-#		libjpeg-dev \
-#		libmagickwand-dev \
-#		libpng-dev \
-#		libzip-dev
-#
+RUN apt-get install -y --no-install-recommends libfreetype6-dev \
+		libjpeg-dev \
+		libmagickwand-dev \
+		libpng-dev \
+		libzip-dev
+
 #RUN	docker-php-ext-configure gd --with-freetype-dir=/usr --with-jpeg-dir=/usr --with-png-dir=/usr
 #RUN docker-php-ext-install gd
 #
 #RUN docker-php-ext-configure zip --with-libzip=/usr/include
-#RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip
 #
 #RUN docker-php-ext-install pdo_mysql
 #RUN docker-php-ext-install exif
